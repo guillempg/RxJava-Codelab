@@ -25,15 +25,15 @@ public class Task2_TransformationsCuttingTheForest {
   @Test
   public void map_fromOnePieceExactlyToOnePieceOfOtherStuff() {
     Observable<Tree> treeObservable = Lumberjack.cut(Forest.AMAZON);
-
     // TODO: Transform Observable of Trees to Observable of Firewood. Tools like handSaw and chopping can be useful
-
-    Observable<Firewood> woodObservable = null;
-//  fireplace.subscribeForBurn(woodObservable);
+    Observable<Firewood> woodObservable = treeObservable.map(s-> Tools.handSaw(s))
+                                                        .map(s-> Tools.chop(s));
+    fireplace.subscribeForBurn(woodObservable);
   }
 
   @Test
   public void flatMap_chainSawProducesMoreLogs() {
+    Observable<Tree> treeObservable = Lumberjack.cut(Forest.AMAZON);
     // TODO:  Cutting wood by handSaw is not effective, lets use chainSaw now
     Observable<Firewood> woodObservable = null;
 //  fireplace.subscribeForBurn(woodObservable);
