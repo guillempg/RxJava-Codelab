@@ -21,16 +21,20 @@ public class Task4_ErrorHandling {
   @Test
   public void printErrorMessage() {
     // TODO: Print all values and incoming error message
+    screwsObservable.subscribe(System.out::println, throwable -> System.out.println(throwable.getMessage()));
+
   }
 
   @Test
   public void emitCustomItemOnError() {
     // TODO: When an error happens, emit number artificial screw
+    screwsObservable.onErrorReturnItem(Parts.defaultScrew()).subscribe(System.out::println);
   }
 
   @Test
   public void subscribeToExtraObservableOnError() {
     // TODO: When an error happens, subscribe to extra observable
+    screwsObservable.onErrorResumeNext(extraScrewsObservable).subscribe(System.out::println);
   }
 
   @Test

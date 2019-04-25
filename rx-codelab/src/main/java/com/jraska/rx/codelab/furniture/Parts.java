@@ -23,6 +23,10 @@ public final class Parts {
     return new Screw();
   }
 
+  public static DefaultScrew defaultScrew() {
+    return new DefaultScrew();
+  }
+
   public static Observable<Rivet> rivet(Screw screw) {
     return Observable.just(new Rivet());
   }
